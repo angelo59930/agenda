@@ -1,13 +1,13 @@
+  {% include "header.html" %}
+  <br/>
+  <a href="{{url_for('create')}}" class="btn btn-success">
+    add new concact
+  </a>
+  <br>
+  <br>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <title>Document</title>
-</head>
-<body>
+
+
   <table class="table table-dark">
     <thead class="thead-light">
       <tr>
@@ -30,8 +30,8 @@
         <td>{{peopel[4] }}</td>
         <td>{{peopel[3] }}</td>
         <td>  
-          <a href="/edit/{{peopel[0]}}">Edit</a> | 
-          <a href="/destroy/{{peopel[0]}}">Delete</a>
+          <a class="btn btn-warning" href="/edit/{{peopel[0]}}">Edit</a> |
+          <a onclick="return confirm('¿are you sure?')" class="btn btn-danger" href="/destroy/{{peopel[0]}}">Delete</a>
         </td>
       </tr>
       {% endfor %}
@@ -40,6 +40,4 @@
   </table>
 
 
-
-</body>
-</html>
+ {% include "footer.html" %}

@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template,request,redirect
+from flask import render_template,request,url_for,flash,redirect
 from dao.receptionData import ReceptionData
 
 from patterns.singleton import Singleton
@@ -9,6 +9,8 @@ from dao.contactDao import ContactDao
 
 #Declaramos la app
 app = Flask(__name__)
+
+app.secret_key="supersecretvalidation"
 
 #Conection to data base
 bd = Singleton()
@@ -28,6 +30,12 @@ def create():
 
 @app.route("/store",methods=["POST"])
 def storage():
+  name = request.form["txtname"]
+  if name == "":
+    flash("The name of contact is nessesary")
+    return redirect(url_for("create"))
+
+
   person = ReceptionData("txtname","txtsurname","txtemail","txtphone")
   aux = ContactDao()
   aux.create(person.getPerson())
@@ -53,9 +61,7 @@ def update():
   _id = request.form["txtId"]
   aux = ReceptionData("txtname","txtsurname","txtemail","txtphone")
   cDao = ContactDao()
-  cDao.update(aux.getPerson(),_id)
- 
-  
+  cDao.update(aux.getPerson(),_id) 
   return redirect("/")
 
 
