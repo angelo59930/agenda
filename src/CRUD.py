@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import render_template,request,redirect
+from dao.receptionData import ReceptionData
 
 from patterns.singleton import Singleton
 from model.peopel import Peopel
@@ -29,18 +30,9 @@ def create():
 
 @app.route("/store",methods=["POST"])
 def storage():
-  _FirstName = request.form["txtname"]
-  _Surname = request.form["txtsurname"]
-  _Email = request.form["txtemail"]
-  _Phone = request.form["txtphone"]
-
-  peopel = Peopel(_FirstName)
-  peopel.surname = _Surname
-  peopel.email = _Email
-  peopel.phone = _Phone
-
+  person = ReceptionData("txtname","txtsurname","txtemail","txtphone")
   aux = ContactDao()
-  aux.create(peopel)
+  aux.create(person.getPerson())
 
   return redirect("/")
 
@@ -52,10 +44,17 @@ def destroy(id):
   return redirect("/")
 
 @app.route("/update/<string:id>")
-def update():
-  
-  pass
+def edit(id):
+  aux = ContactDao()
+  peopel = aux.read(id)
 
+  return render_template("contacs/edit.html",peopel=peopel)
+
+@app.route("/update",methods=["POST"])
+def update():
+  person = ReceptionData("txtname","txtsurname","txtemail","txtphone")
+
+  return redirect("/")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,26 @@
+
+{% for peopel in peopel %}
+
+
+
+<form method="POST" action="/update" enctype="multipart/form-data">
+  FirstName:
+  <input type="text" value="{{peopel[1]}}" name="txtname" id="txtname">
+  <br>
+  Surname:
+  <input type="text" value="{{peopel[2]}}" name="txtsurname" id="txtsurname">
+  <br>
+  Email:
+  <input type="text" value="{{peopel[3]}}" name="txtemail" id="txtemail">
+  <br>
+  Phone:
+  <input type="text" value="{{peopel[4]}}" name="txtphone" id="txtphone">
+  <br>
+
+  <br>
+  <input type="submit" value="add">
+
+</form>
+
+{% endfor %}
+

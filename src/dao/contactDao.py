@@ -18,4 +18,15 @@ class ContactDao:
     DELETE_COMTACT = "DELETE FROM Agenda.peopel WHERE idpeopel=%s"
     self.bd.cursor.execute(DELETE_COMTACT,id)
     self.bd.conection.commit()
-    
+
+  def read(self,id):
+    SELECT_CONTACT = "SELECT * FROM Agenda.peopel WHERE idpeopel = %s"
+    self.bd.cursor.execute(SELECT_CONTACT,id)
+    peopel = self.bd.cursor.fetchall()
+    self.bd.conection.commit()
+    return peopel
+
+  '''def update(self, peopel:Peopel):
+    DELETE_COMTACT = "UPDATE FROM Agenda.peopel WHERE idpeopel=%s"
+    self.bd.cursor.execute(DELETE_COMTACT,id)
+    self.bd.conection.commit()'''
