@@ -1,9 +1,10 @@
 
 {% for peopel in peopel %}
-
-
-
 <form method="POST" action="/update" enctype="multipart/form-data">
+
+  id:
+  <input type="text" value="{{peopel[0]}}" name="txtId" id="txtId">
+  <br>
   FirstName:
   <input type="text" value="{{peopel[1]}}" name="txtname" id="txtname">
   <br>
@@ -11,14 +12,14 @@
   <input type="text" value="{{peopel[2]}}" name="txtsurname" id="txtsurname">
   <br>
   Email:
-  <input type="text" value="{{peopel[3]}}" name="txtemail" id="txtemail">
+  <input type="text" value="{{peopel[4]}}" name="txtemail" id="txtemail">
   <br>
   Phone:
-  <input type="text" value="{{peopel[4]}}" name="txtphone" id="txtphone">
+  <input type="text" value="{{peopel[3]}}" name="txtphone" id="txtphone">
   <br>
 
   <br>
-  <input type="submit" value="add">
+  <input type="submit" value="update">
 
 </form>
 

@@ -11,7 +11,7 @@
   <table class="table table-dark">
     <thead class="thead-light">
       <tr>
-        <th>#</th>
+        <th>#id</th>
         <th>First Name</th>
         <th>SurName</th>
         <th>Email</th>
@@ -27,9 +27,10 @@
         <td>{{peopel[0] }}</td>
         <td>{{peopel[1] }}</td>
         <td>{{peopel[2] }}</td>
-        <td>{{peopel[3] }}</td>
         <td>{{peopel[4] }}</td>
-        <td>  <a href="/update/{{peopel[0]}}">Edit</a> | 
+        <td>{{peopel[3] }}</td>
+        <td>  
+          <a href="/edit/{{peopel[0]}}">Edit</a> | 
           <a href="/destroy/{{peopel[0]}}">Delete</a>
         </td>
       </tr>

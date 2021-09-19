@@ -15,8 +15,8 @@ class ContactDao:
     self.bd.conection.commit()
   
   def delete(self,id):
-    DELETE_COMTACT = "DELETE FROM Agenda.peopel WHERE idpeopel=%s"
-    self.bd.cursor.execute(DELETE_COMTACT,id)
+    DELETE_CONTACT = "DELETE FROM Agenda.peopel WHERE idpeopel=%s"
+    self.bd.cursor.execute(DELETE_CONTACT,id)
     self.bd.conection.commit()
 
   def read(self,id):
@@ -26,7 +26,9 @@ class ContactDao:
     self.bd.conection.commit()
     return peopel
 
-  '''def update(self, peopel:Peopel):
-    DELETE_COMTACT = "UPDATE FROM Agenda.peopel WHERE idpeopel=%s"
-    self.bd.cursor.execute(DELETE_COMTACT,id)
-    self.bd.conection.commit()'''
+  def update(self,peopel:Peopel,id):
+    UPDATE_CONTACT = "UPDATE Agenda.peopel SET name=%s,surname=%s,phone=%s,email=%s WHERE idpeopel=%s"
+    data = (peopel.name,peopel.surname,peopel.phone,peopel.email,id)
+    self.bd.cursor.execute(UPDATE_CONTACT,data)
+    self.bd.conection.commit()
+    

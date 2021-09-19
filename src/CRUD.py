@@ -19,9 +19,7 @@ def index():
   sql = "SELECT * FROM Agenda.peopel;"
   bd.cursor.execute(sql)
   peopel =  bd.cursor.fetchall()
-
   bd.conection.commit()
-
   return render_template("contacs/index.html",peopel=peopel)
 
 @app.route("/create")
@@ -43,7 +41,7 @@ def destroy(id):
   aux.delete(id)
   return redirect("/")
 
-@app.route("/update/<string:id>")
+@app.route("/edit/<string:id>")
 def edit(id):
   aux = ContactDao()
   peopel = aux.read(id)
@@ -52,8 +50,12 @@ def edit(id):
 
 @app.route("/update",methods=["POST"])
 def update():
-  person = ReceptionData("txtname","txtsurname","txtemail","txtphone")
-
+  _id = request.form["txtId"]
+  aux = ReceptionData("txtname","txtsurname","txtemail","txtphone")
+  cDao = ContactDao()
+  cDao.update(aux.getPerson(),_id)
+ 
+  
   return redirect("/")
 
 
