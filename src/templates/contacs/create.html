@@ -3,7 +3,7 @@
 {% with messages= get_flashed_messages() %}
 {% if messages %}
 	<div class="alert alert-danger" role="alert">
-	{% for message in message%}
+	{% for message in messages%}
 			{{message}}
 	{% endfor %}
 	</div>
@@ -19,19 +19,19 @@
 
         <div class="form-group">
           <label for="txtname">First Name</label>
-          <input id="txtname" class="form-control" type="text" name="">
+          <input id="txtname" class="form-control" type="text" name="txtname">
         </div>
         <div class="form-group">
           <label for="txtsurname">Surname</label>
-          <input id="txtsurname" class="form-control" type="text" name="">
+          <input id="txtsurname" class="form-control" type="text" name="txtsurname">
         </div>
         <div class="form-group">
           <label for="txtemail">Email</label>
-          <input id="txtemail" class="form-control" type="text" name="">
+          <input id="txtemail" class="form-control" type="text" name="txtemail">
         </div>
         <div class="form-group">
           <label for="txtphone">Phone</label>
-          <input id="txtphone" class="form-control" type="text" name="">
+          <input id="txtphone" class="form-control" type="text" name="txtphone">
         </div>
 
         <div class="form-group">

@@ -34,8 +34,7 @@ def storage():
   if name == "":
     flash("The name of contact is nessesary")
     return redirect(url_for("create"))
-
-
+    
   person = ReceptionData("txtname","txtsurname","txtemail","txtphone")
   aux = ContactDao()
   aux.create(person.getPerson())
