@@ -25,6 +25,13 @@ class ContactDao:
     peopel = self.bd.cursor.fetchall()
     self.bd.conection.commit()
     return peopel
+  
+  def readAll(self):
+    SELECT_ALL_CONTACT = "SELECT * FROM Agenda.peopel"
+    self.bd.cursor.execute(SELECT_ALL_CONTACT)
+    peopel = self.bd.cursor.fetchall()
+    self.bd.conection.commit()
+    return peopel
 
   def update(self,peopel:Peopel,id):
     UPDATE_CONTACT = "UPDATE Agenda.peopel SET name=%s,surname=%s,phone=%s,email=%s WHERE idpeopel=%s"

@@ -19,15 +19,6 @@ bd.conectionBD(app)
 #inicializacion del dao
 contact = ContactDao()
 
-@app.route("/")
-def index():
-  sql = "SELECT * FROM Agenda.peopel;"
-  bd.cursor.execute(sql)
-  peopel =  bd.cursor.fetchall()
-  bd.conection.commit()
-  return jsonify(peopel)
-  #return render_template("contacs/index.html",peopel=peopel)
-
 @app.route("/add-contact",methods=["POST"])
 def storage():
   tmp = ReceptionJson(person=request.json)
@@ -49,8 +40,13 @@ def edit(id):
   contact.update(aux,id)
   return jsonify({"message":"person updated succesfuly"})
 
+@app.route("/search/<string:id>",methods=["GET"])
+def func(id):
+  return jsonify(contact.read(id))
 
-
+@app.route("/contacts",methods=["GET"])
+def contacts():
+  return jsonify(contact.readAll())
 
 if __name__ == "__main__":
   app.run(debug=True)
