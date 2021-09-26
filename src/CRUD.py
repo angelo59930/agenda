@@ -3,7 +3,6 @@ from flask import render_template,request,url_for,flash,redirect
 from dao.receptionData import ReceptionData
 
 from patterns.singleton import Singleton
-from model.peopel import Peopel
 from dao.contactDao import ContactDao
 
 
@@ -52,7 +51,6 @@ def destroy(id):
 def edit(id):
   aux = ContactDao()
   peopel = aux.read(id)
-
   return render_template("contacs/edit.html",peopel=peopel)
 
 @app.route("/update",methods=["POST"])
