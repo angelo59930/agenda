@@ -1,5 +1,6 @@
 from flask import Flask,json
 from flask import request,jsonify
+from flask_cors import CORS
 
 from model.peopel import Peopel
 from patterns.singleton import Singleton
@@ -11,6 +12,8 @@ from dao.receptionJson import ReceptionJson
 app = Flask(__name__)
 
 app.secret_key="supersecretvalidation"
+
+CORS(app)
 
 #Conection to data base
 bd = Singleton()
@@ -49,4 +52,4 @@ def contacts():
   return jsonify(contact.readAll())
 
 if __name__ == "__main__":
-  app.run(debug=True)
+  app.run()
